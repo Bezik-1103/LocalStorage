@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <link rel="stylesheet" id="theme" href="./green.css">
+    </head>
+    <body>
+        Светлая:
+        <input type="radio" name="theme_r" value="white" onclick="getTheme()">
+        Темная:
+        <input type="radio" name="theme_r" value="black"  onclick="getTheme()">
+    </body>
+    <script>
+        let themeId = "white";
+        window.onload = function getTheme() {
+            let radios = document.getElementsByName("theme_r");
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].value == localStorage.getItem("theme_id")) {
+                   radios[i].checked = true;
+                    
+                    break;
+                  }
+             }
+            themeId = localStorage.getItem("theme_id");
+             console.log(themeId);
+            if (themeId == 'white'){
+                document.getElementById("theme").href = '/white.css';
+            }
+            else { document.getElementById("theme").href = '/black.css';}
+        } 
+        function getTheme() {
+            
+            if(localStorage.getItem("theme_id" !== '')) {  themeId = localStorage.getItem("theme_id", themeId); }
+           
+            let radios = document.getElementsByName("theme_r");
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    themeId = (radios[i].value);
+                    localStorage.setItem("theme_id", themeId);
+                    break;
+                  }
+             }
+             console.log(themeId);
+            if (themeId == 'white'){
+                document.getElementById("theme").href = '/white.css';
+            }
+            else { document.getElementById("theme").href = '/black.css';}
+        } 
+    </script>
+</html>
